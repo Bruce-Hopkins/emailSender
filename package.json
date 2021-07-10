@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "devstart": "nodemon ./bin/www",
+    "build": "tsc",
+    "start": "node ./bin/www.ts",
+    "devstart": "nodemon ./bin/www.ts",
     "serverstart": "DEBUG=infinidreams:* npm run devstart",
     "tests": "mocha --recursive tests --exit"
   },
@@ -25,6 +26,7 @@
     "@types/http-errors": "^1.8.1",
     "@types/mocha": "^8.2.3",
     "@types/morgan": "^1.9.3",
+    "@types/node": "^14.17.5",
     "@types/supertest": "^2.0.11",
     "chai": "^3.5.0",
     "chai-http": "^4.3.0",

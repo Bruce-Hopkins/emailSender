@@ -33,7 +33,7 @@ app.use(function(err: any, req: express.Request, res: express.Response, next: ex
 
   // render the error page
   res.status(err.status || 500);
-  res.send("Error")
+  res.send("Error: " + err)
 });
 
 module.exports = app;

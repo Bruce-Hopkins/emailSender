@@ -16,10 +16,10 @@ var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 // Set up mongoose connection
-var mongoose = require('mongoose');
+import {connect, connection } from 'mongoose';
 var mongoDB = 'mongodb://127.0.0.1/automatic_endpoint_generator'; // *Variable
-mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
-var db = mongoose.connection;
+connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
+var db = connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 /**
@@ -40,7 +40,7 @@ server.on('listening', onListening);
  * Normalize a port into a number, string, or false.
  */
 
-function normalizePort(val) {
+function normalizePort(val:any) {
   var port = parseInt(val, 10);
 
   if (isNaN(port)) {
@@ -60,7 +60,7 @@ function normalizePort(val) {
  * Event listener for HTTP server "error" event.
  */
 
-function onError(error) {
+function onError(error:any) {
   if (error.syscall !== 'listen') {
     throw error;
   }

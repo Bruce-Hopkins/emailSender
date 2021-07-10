@@ -1,20 +1,19 @@
-var express = require('express');
-var router = express.Router();
-var middlewareTemplate = require('../middleware/middleware_template')
+import * as express from 'express';
+const router = express.Router();
+import * as middlewareEmail from "../middleware/middleware_email"
 
 // Template /GET 
-router.get("/template/", middlewareTemplate.getTemplate);
+router.get("/email/", middlewareEmail.getEmail);
 
-router.get("/template/:id", middlewareTemplate.getOneTemplate);
+router.get("/email/:id", middlewareEmail.getOneEmail);
 
 // Template /POST
-router.post("/template", middlewareTemplate.postTemplate);
+router.post("/email", middlewareEmail.postEmail);
 
 // Template /DELETE
-router.delete("/template/:id", middlewareTemplate.deleteTemplate);
+router.delete("/email/:id", middlewareEmail.deleteEmail);
 
 // Template /UPDATE
-router.put("/template/:id", middlewareTemplate.updateTemplate);
+router.put("/email/:id", middlewareEmail.updateEmail);
 
 module.exports = router;
-
