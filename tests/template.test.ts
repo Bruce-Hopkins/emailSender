@@ -43,12 +43,12 @@ describe("Email", () => {
     beforeEach(function() {  
         DB.remove({})
     })
-    describe("/GET Email", () => { // * Variable (Change the name of each endpoint)
+    describe("/GET Email", () => { 
         let id:string; // Will contain the id for the update route
 
         // Inserts data to /GET before the testing
         before(function() {  
-            let email:EmailDocument = new DB ( // * Variable (change attributes)
+            let email:EmailDocument = new DB ( 
                 {
                     email: exampleEmail.email,
                     message: exampleEmail.message,
@@ -103,7 +103,7 @@ describe("Email", () => {
 
         // Inserts data to /UPDATE before the testing
         before(function() {  
-            let email:EmailDocument = new DB ( // * Variable
+            let email:EmailDocument = new DB ( 
                 {
                     email: exampleEmail.email,
                     message: exampleEmail.message,
