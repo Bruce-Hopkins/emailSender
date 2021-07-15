@@ -17,7 +17,7 @@ app.set('port', port);
 
 // Set up mongoose connection
 import {connect, connection } from 'mongoose';
-var mongoDB = 'mongodb://127.0.0.1/automatic_endpoint_generator'; // *Variable
+var mongoDB = 'mongodb://127.0.0.1/email_sender';
 connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
 var db = connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));

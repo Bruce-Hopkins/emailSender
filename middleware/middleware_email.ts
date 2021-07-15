@@ -1,15 +1,15 @@
 import {DB} from '../database/template_model'
 import * as express from 'express';
-import {Email} from '../index'
+import {EmailDocument} from '../index'
 import { Mongoose } from 'mongoose';
 
 /**
- * /GET a all Email
+ * /GET a all EmailDocument
  * @response sends a single email
  */
 export function getEmail(req: express.Request, res: express.Response, next: express.NextFunction) {
     DB.find()
-    .exec(function (err:any, results:Email) {
+    .exec(function (err:any, results:EmailDocument) {
         if (err) {
             console.error(err)
             return next(err);
@@ -28,7 +28,7 @@ export function getEmail(req: express.Request, res: express.Response, next: expr
  */
 export function getOneEmail(req: express.Request, res: express.Response, next: express.NextFunction) {
     DB.findById(req.params.id)
-    .exec(function (err:any, results:Email) {
+    .exec(function (err:any, results:EmailDocument) {
         if (err) return next(err);
         if (results) res.json(results)
         else {
@@ -45,11 +45,11 @@ export function getOneEmail(req: express.Request, res: express.Response, next: e
  * @body email{string} message{string}
  */
 export function postEmail (req: express.Request, res: express.Response, next: express.NextFunction) {
-    const email:Email = new DB (
+    const email:EmailDocument = new DB (
         {
             email: req.body.email,
             message: req.body.message,
-            createdDate: Date.now()
+            createdDate: new Date()
         }
     )
     email.save(function (err:any) {
@@ -64,15 +64,15 @@ export function postEmail (req: express.Request, res: express.Response, next: ex
  * @body email{string} message{string}
  */
 export function updateEmail (req: express.Request, res: express.Response, next: express.NextFunction) {
-    const email:Email = new DB (
+    const email:EmailDocument = new DB (
         {
             email: req.body.email,
             message: req.body.message,
-            createdDate: Date.now(), 
+            createdDate: new Date(), 
             _id: req.params.id
         }
     )
-    DB.findByIdAndUpdate(req.params.id, email, {}, function (err:any, updatedEmail:Email) {
+    DB.findByIdAndUpdate(req.params.id, email, {}, function (err:any, updatedEmail:EmailDocument) {
         if (err) { return next(err); }
         res.status(201).send(email);
     })
@@ -85,7 +85,7 @@ export function updateEmail (req: express.Request, res: express.Response, next: 
  */
 export function deleteEmail(req: express.Request, res: express.Response, next: express.NextFunction) {
     DB.findById(req.params.id)
-    .exec(function (err:any, results:Email) {
+    .exec(function (err:any, results:EmailDocument) {
         if(err) { return next(err); }
         if (results) {
             DB.findByIdAndDelete(req.params.id, function(err:any) {
